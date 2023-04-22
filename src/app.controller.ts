@@ -1,11 +1,12 @@
 import { Controller, Get, Post, Delete, Param, Patch } from '@nestjs/common';
 import { AppService } from './app.service';
+//import { UsersModule } from './users/user.module';
 
-@Controller('users')
+@Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get()
+/*   @Get()
   findAllUsers(): string {
     return 'This returns all users';
   }
@@ -27,7 +28,9 @@ export class AppController {
   }
 
   @Delete('delete')
-  deleteUsers(): string {
+  deleteUser(): string {
     return 'This deletes all users';
   }
+
+   */
 }

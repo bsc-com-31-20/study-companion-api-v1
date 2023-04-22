@@ -3,6 +3,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './users/users';
+import { UsersModule } from './users/users.module';
+
 //annotation something
 @Module({
   imports: [
@@ -16,6 +18,9 @@ import { User } from './users/users';
         entities: [User],
         synchronize: true,
       }),
+      TypeOrmModule.forFeature([User]),
+      UsersModule,
+      //UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService],
