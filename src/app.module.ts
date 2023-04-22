@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { User } from './users/users';
 //annotation something
 @Module({
   imports: [
@@ -12,7 +13,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
         username: 'stevetsekani',
         password: 'SteveD1@',
         database: 'study_companion',
-        entities: [],
+        entities: [User],
         synchronize: true,
       }),
   ],

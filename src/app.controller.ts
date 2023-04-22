@@ -27,7 +27,7 @@ export class AppController {
   }
 
   @Delete('delete')
-  deleteUser(): string {
+  deleteUsers(): string {
     return 'This deletes all users';
   }
 }
