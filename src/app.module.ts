@@ -6,6 +6,8 @@ import { User } from './users/users';
 import { UsersModule } from './users/users.module';
 import { LoggerMiddleware } from './middleware/logger.middleware';
 import { UsersController } from './users/users.controller';
+import { APP_FILTER, HttpAdapterHost } from '@nestjs/core';
+import { AllExceptionsFilter } from './ExceptionFilters/all-exceptions.filter';
 
 //Importing TypeORM for database connection
 @Module({
@@ -25,7 +27,13 @@ import { UsersController } from './users/users.controller';
   
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService,
+    {
+      provide: APP_FILTER,
+      useClass: AllExceptionsFilter,
+    },
+    HttpAdapterHost,
+  ],
   
 })
 
