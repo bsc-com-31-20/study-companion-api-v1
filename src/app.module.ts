@@ -1,11 +1,13 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './users/users';
 import { UsersModule } from './users/users.module';
+import { LoggerMiddleware } from './middleware/logger.middleware';
+import { UsersController } from './users/users.controller';
 
-//annotation something
+//Importing TypeORM for database connection
 @Module({
   imports: [
       TypeOrmModule.forRoot({
@@ -20,14 +22,19 @@ import { UsersModule } from './users/users.module';
       }),
       TypeOrmModule.forFeature([User]),
       UsersModule,
-
-      
-    
+  
   ],
   controllers: [AppController],
   providers: [AppService],
   
 })
-export class AppModule {}
+
+export class AppModule implements NestModule{
+  configure(consumer: MiddlewareConsumer) {
+    consumer
+      .apply(LoggerMiddleware)
+      .forRoutes(UsersController);
+  }
+}
 //
 
