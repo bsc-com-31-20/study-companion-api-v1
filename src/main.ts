@@ -9,7 +9,7 @@ async function bootstrap() {
   const config = new DocumentBuilder()
     .setTitle('Study-Companion Web App')
     .setDescription('The Study-companion API description')
-    .setVersion('1.0.0')
+    .setVersion('1.0.4')
     .addTag('')
     .build();
   const document = SwaggerModule.createDocument(app, config);

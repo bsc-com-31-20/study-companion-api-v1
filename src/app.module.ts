@@ -20,7 +20,9 @@ import { UsersModule } from './users/users.module';
       }),
       TypeOrmModule.forFeature([User]),
       UsersModule,
-      //UsersModule,
+
+      
+    
   ],
   controllers: [AppController],
   providers: [AppService],
