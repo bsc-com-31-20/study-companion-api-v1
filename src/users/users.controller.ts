@@ -6,6 +6,9 @@ import { RolesGuard } from 'src/Guards/roles.guard';
 @Controller('users')
 @UseGuards(RolesGuard)
 export class UsersController {
+    findAll(): any {
+        throw new Error('Method not implemented.');
+    }
     constructor(private readonly userService: UsersService) {}
 
   @Get()
