@@ -6,8 +6,12 @@ import { User } from './users/users';
 import { UsersModule } from './users/users.module';
 import { LoggerMiddleware } from './middleware/logger.middleware';
 import { UsersController } from './users/users.controller';
-import { APP_FILTER, HttpAdapterHost } from '@nestjs/core';
+import { APP_FILTER, APP_GUARD, HttpAdapterHost } from '@nestjs/core';
 import { AllExceptionsFilter } from './ExceptionFilters/all-exceptions.filter';
+import { CoursesModule } from './courses/courses.module';
+import { Course } from './courses/courses';
+import { AuthModule } from './auth/auth.module';
+import { AuthGuard } from './auth/auth.guard';
 
 //Importing TypeORM for database connection
 @Module({
@@ -19,11 +23,13 @@ import { AllExceptionsFilter } from './ExceptionFilters/all-exceptions.filter';
         username: 'stevetsekani',
         password: 'SteveD1@',
         database: 'study_companion',
-        entities: [User],
+        entities: [User, Course],
         synchronize: true,
       }),
-      TypeOrmModule.forFeature([User]),
+      TypeOrmModule.forFeature([User, Course]),
       UsersModule,
+      CoursesModule,
+      AuthModule,
   
   ],
   controllers: [AppController],
@@ -31,6 +37,10 @@ import { AllExceptionsFilter } from './ExceptionFilters/all-exceptions.filter';
     {
       provide: APP_FILTER,
       useClass: AllExceptionsFilter,
+    },
+    {
+      provide: APP_GUARD,
+    useClass: AuthGuard,
     },
     HttpAdapterHost,
   ],
