@@ -6,7 +6,8 @@ import {ApiOperation, ApiTags} from '@nestjs/swagger';
 
 @ApiTags('USERS')
 @Controller('/api/v1/users')
-@UseGuards(RolesGuard)
+//@UseGuards(RolesGuard)
+@UseGuards(new RolesGuard())
 export class UsersController {
     findAll(): any {
         throw new Error('Method not implemented.');

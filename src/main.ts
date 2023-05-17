@@ -7,9 +7,9 @@ import { LoggingInterceptor } from './interceptors/logging.interceptor';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.useGlobalInterceptors(new LoggingInterceptor());
-  app.useGlobalGuards(new RolesGuard());
+  //app.useGlobalGuards(new RolesGuard());
 
-  //here pasted
+
   const config = new DocumentBuilder()
     .setTitle('Study-Companion Web App')
     .setDescription('The Study-companion API description')

@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Delete, Param, ParseIntPipe, Put, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Delete, Param, ParseIntPipe, Put, UseGuards, Post } from '@nestjs/common';
 import { RolesGuard } from 'src/Guards/roles.guard';
 import { CoursesService } from './courses.service';
 import { Course } from './courses';
@@ -33,10 +33,10 @@ async returnUserStatus(@Param('id', ParseIntPipe) id: number): Promise<Course> {
   return await this.CourseService.findUserById(id);
 }
 
-//@Post()
-//async createUser(@Body() userData: User): Promise<User> {
-  //return await this.CourseService.createUser(userData);
-//}
+@Post()
+async createCourse(@Body() courseData: Course): Promise<Course> {
+  return await this.CourseService.createCourse(courseData);
+}
 
 @Put(':id')
 @ApiOperation({ summary: 'Change course name' })

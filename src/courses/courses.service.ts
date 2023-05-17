@@ -22,9 +22,9 @@ export class CoursesService {
       }
       
     
-      //async createUser(user: User): Promise<Course> {
-        //return await this.userRepository.save(user);
-      //}
+      async createCourse(course: Course): Promise<Course> {
+        return await this.courseRepository.save(course);
+      }
     
       async updateUser(id: number, data: Partial<Course>): Promise<void> {
         await this.courseRepository.update(id, data);

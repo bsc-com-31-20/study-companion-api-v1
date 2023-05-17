@@ -33,17 +33,15 @@ import { AuthGuard } from './auth/auth.guard';
   
   ],
   controllers: [AppController],
-  providers: [AppService,
-    {
+  providers: [AuthModule, AppService,
+   {
       provide: APP_FILTER,
       useClass: AllExceptionsFilter,
     },
-    {
-      provide: APP_GUARD,
-    useClass: AuthGuard,
-    },
+    
     HttpAdapterHost,
-  ],
+    
+ ],
   
 })
 
