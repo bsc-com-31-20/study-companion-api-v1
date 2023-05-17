@@ -29,11 +29,11 @@ async findUserById(@Param('id', ParseIntPipe) id: number): Promise<Course> {
 @Get(':id/status')
 @ApiOperation({ summary: 'Get all students registered to a course' })
 async returnUserStatus(@Param('id', ParseIntPipe) id: number): Promise<Course> {
-  //unimplemented method
   return await this.CourseService.findCourseById(id);
 }
 
 @Post()
+@ApiOperation({ summary: 'Create a course' })
 async createCourse(@Body() courseData: Course): Promise<Course> {
   return await this.CourseService.createCourse(courseData);
 }
