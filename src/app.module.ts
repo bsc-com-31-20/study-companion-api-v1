@@ -12,6 +12,7 @@ import { CoursesModule } from './courses/courses.module';
 import { Course } from './courses/courses';
 import { AuthModule } from './auth/auth.module';
 import { AuthGuard } from './auth/auth.guard';
+import { FlashcardsModule } from './flashcards/flashcards.module';
 
 //Importing TypeORM for database connection
 @Module({
@@ -30,6 +31,7 @@ import { AuthGuard } from './auth/auth.guard';
       UsersModule,
       CoursesModule,
       AuthModule,
+      FlashcardsModule,
   
   ],
   controllers: [AppController],

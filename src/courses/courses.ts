@@ -6,14 +6,8 @@ export class Course {
   id: number;
 
   @Column()
+  courseCode: string;
+  @Column()
   courseName: string;
 
-  @Column()
-  firstName: string;
-
-  @Column()
-  email: string;
-
-  @Column()
-  lastName: string;
 }

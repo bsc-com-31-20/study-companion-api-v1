@@ -3,7 +3,6 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Course } from './courses';
 import { Repository } from 'typeorm';
 
-//this file needs to be changed
 @Injectable()
 export class CoursesService {
     constructor(
@@ -11,11 +10,11 @@ export class CoursesService {
         private readonly courseRepository: Repository<Course>,
       ) {}
     
-      async findAllUsers(): Promise<Course[]> {
+      async findAllCourses(): Promise<Course[]> {
         return await this.courseRepository.find();
       }
     
-      async findUserById(id: number): Promise<Course> {
+      async findCourseById(id: number): Promise<Course> {
         return await this.courseRepository.findOne({
           where: { id }
         });
@@ -26,11 +25,11 @@ export class CoursesService {
         return await this.courseRepository.save(course);
       }
     
-      async updateUser(id: number, data: Partial<Course>): Promise<void> {
+      async updateCourse(id: number, data: Partial<Course>): Promise<void> {
         await this.courseRepository.update(id, data);
       }
     
-      async deleteUser(id: number): Promise<void> {
+      async deleteCourse(id: number): Promise<void> {
         await this.courseRepository.delete(id);
       }
 }
