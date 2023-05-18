@@ -7,6 +7,7 @@ export class Course {
 
   @Column()
   courseCode: string;
+  
   @Column()
   courseName: string;
 

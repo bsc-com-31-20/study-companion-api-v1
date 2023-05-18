@@ -8,7 +8,7 @@ import { ApiOperation, ApiTags } from '@nestjs/swagger';
 @Controller('/api/v1/courses')
 @UseGuards(RolesGuard)
 export class CoursesController {
-    findAll(): any{
+    findAll(): any {
         throw new Error('Not found');
     }
 
