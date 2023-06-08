@@ -19,11 +19,11 @@ import { FlashcardsModule } from './flashcards/flashcards.module';
   imports: [
       TypeOrmModule.forRoot({
         type: 'mysql',
-        host: 'localhost',
+        host: 'sql12.freesqldatabase.com',
         port: 3306,
-        username: 'stevetsekani',
-        password: 'SteveD1@',
-        database: 'study_companion',
+        username: 'sql12624630',
+        password: 'DcpN6Uu7an',
+        database: 'sql12624630',
         entities: [User, Course],
         synchronize: true,
       }),
