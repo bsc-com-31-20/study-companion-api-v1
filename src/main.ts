@@ -14,7 +14,7 @@ async function bootstrap() {
     .setTitle('Study-Companion Web App')
     .setDescription('The Study-companion API description')
     .setVersion('2.10.43v1a1')
-    .addTag('')
+    .addTag('Endpoints')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
