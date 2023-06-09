@@ -6,6 +6,8 @@ import { LoggingInterceptor } from './interceptors/logging.interceptor';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  const port = process.env.PORT || 3000;
+
   app.useGlobalInterceptors(new LoggingInterceptor());
   //app.useGlobalGuards(new RolesGuard());
 
@@ -20,6 +22,6 @@ async function bootstrap() {
   SwaggerModule.setup('api', app, document);
 
   
-  await app.listen(process.env.PORT);
+  await app.listen(port);
 }
 bootstrap();

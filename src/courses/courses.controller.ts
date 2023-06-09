@@ -14,14 +14,22 @@ export class CoursesController {
 
 constructor(private readonly CourseService: CoursesService){}
 
+
+@Post()
+@ApiOperation({ summary: 'Creating a course', description: ''})
+@ApiOperation({ summary: 'Create a course' })
+async createCourse(@Body() courseData: Course): Promise<Course> {
+  return await this.CourseService.createCourse(courseData);
+}
+
 @Get()
-@ApiOperation({ summary: 'Get all courses' })
+@ApiOperation({ summary: 'Getting all courses', description: 'No need to enter any value. Expected output is a list of Courses from the db.'})
 async findAllUsers(): Promise<Course[]> {
   return await this.CourseService.findAllCourses();
 }
 
 @Get(':id')
-@ApiOperation({ summary: 'Get a course by ID' })
+@ApiOperation({ summary: 'Get a course by ID', description: 'Requires an integer e.g 1 to be entered. Expected output is a single Course from the db.' })
 async findUserById(@Param('id', ParseIntPipe) id: number): Promise<Course> {
   return await this.CourseService.findCourseById(id);
 }
@@ -32,22 +40,9 @@ async returnUserStatus(@Param('id', ParseIntPipe) id: number): Promise<Course> {
   return await this.CourseService.findCourseById(id);
 }
 
-@Post()
-@ApiOperation({ summary: 'Create a course' })
-async createCourse(@Body() courseData: Course): Promise<Course> {
-  return await this.CourseService.createCourse(courseData);
-}
-
 @Put(':id')
-@ApiOperation({ summary: 'Change course name' })
+@ApiOperation({ summary: 'Change course name', description: 'Requires an integer e.g 2 to be entered. No expected output. Changes can be seen after another GET request.' })
 async updateUser(@Param('id', ParseIntPipe) id: number, @Body() userData: Course): Promise<void> {
   await this.CourseService.updateCourse(id, userData);
 }
-
-@Delete(':id')
-@ApiOperation({ summary: 'Remove course by ID' })
-async deleteUser(@Param('id', ParseIntPipe) id: number): Promise<void> {
-  await this.CourseService.deleteCourse(id);
-}
-
 }

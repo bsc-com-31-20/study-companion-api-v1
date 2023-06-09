@@ -3,10 +3,11 @@ import { User } from './users';
 import { UsersService } from './users.service';
 import { RolesGuard } from 'src/Guards/roles.guard';
 import {ApiOkResponse, ApiOperation, ApiTags} from '@nestjs/swagger';
+import { AuthGuard } from 'src/auth/auth.guard';
 
 @ApiTags('USERS')
 @Controller('/api/v1/users')
-@UseGuards(new RolesGuard())
+
 export class UsersController {
     findAll(): any {
         throw new Error('Method not implemented.');
@@ -15,6 +16,7 @@ export class UsersController {
 
 
     @Post('auth')
+    @UseGuards(AuthGuard)
     @ApiOperation({ summary: 'Verify if the user is available' })
     async validateUser(@Body() userData: User): Promise<User> {
       //awaiting logic steve eeh
@@ -24,6 +26,7 @@ export class UsersController {
 
   @ApiOkResponse({type:User})
   @Get()
+  //@UseGuards(AuthGuard)
   @ApiOperation({ summary: 'Get all users' })
   async findAllUsers(): Promise<User[]> {
     return await this.userService.findAllUsers();

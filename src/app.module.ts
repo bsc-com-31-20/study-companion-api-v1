@@ -13,21 +13,26 @@ import { Course } from './courses/courses';
 import { AuthModule } from './auth/auth.module';
 import { AuthGuard } from './auth/auth.guard';
 import { FlashcardsModule } from './flashcards/flashcards.module';
+import { Flashcards } from './flashcards/flashcards';
 
 //Importing TypeORM for database connection
 @Module({
   imports: [
       TypeOrmModule.forRoot({
         type: 'mysql',
+        //host: 'localhost',
         host: 'sql12.freesqldatabase.com',
         port: 3306,
+        //username: 'stevetsekani',
         username: 'sql12624630',
+        //password: 'SteveD1@',
         password: 'DcpN6Uu7an',
+        //database: 'study_companion',
         database: 'sql12624630',
-        entities: [User, Course],
+        entities: [User, Course, Flashcards],
         synchronize: true,
       }),
-      TypeOrmModule.forFeature([User, Course]),
+      TypeOrmModule.forFeature([User, Course, Flashcards]),
       UsersModule,
       CoursesModule,
       AuthModule,
