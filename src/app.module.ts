@@ -10,8 +10,6 @@ import { APP_FILTER, APP_GUARD, HttpAdapterHost } from '@nestjs/core';
 import { AllExceptionsFilter } from './ExceptionFilters/all-exceptions.filter';
 import { CoursesModule } from './courses/courses.module';
 import { Course } from './courses/courses';
-import { AuthModule } from './auth/auth.module';
-import { AuthGuard } from './auth/auth.guard';
 import { FlashcardsModule } from './flashcards/flashcards.module';
 import { Flashcards } from './flashcards/flashcards';
 
@@ -35,18 +33,18 @@ import { Flashcards } from './flashcards/flashcards';
       TypeOrmModule.forFeature([User, Course, Flashcards]),
       UsersModule,
       CoursesModule,
-      AuthModule,
+      //AuthModule,
       FlashcardsModule,
   
   ],
   controllers: [AppController],
-  providers: [AuthModule, AppService,
-   {
-      provide: APP_FILTER,
-      useClass: AllExceptionsFilter,
-    },
+  providers: [AppService,
+   //{
+      //provide: APP_FILTER,
+      //useClass: AllExceptionsFilter,
+    //},
     
-    HttpAdapterHost,
+   // HttpAdapterHost,
     
  ],
   
